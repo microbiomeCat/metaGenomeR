@@ -1,0 +1,18 @@
+ggplot(titanic_lodes,
+       aes(x = x, y=Freq,stratum = stratum, alluvium = alluvium,
+           fill = stratum, label = stratum)) +
+  scale_x_discrete(expand = c(0, 0)) + 
+  geom_flow(width = 1/8) + #线跟方块间空隙的宽窄
+  geom_stratum(alpha = .9,width = 1/10) + #方块的透明度、宽度
+  geom_text(stat = "stratum", size = 3,color="black") + #文字大小、颜色
+  
+  #不喜欢默认的配色方案，用前面自己写的配色方案
+  scale_fill_manual(values = mycol) +
+  
+  xlab("") + ylab("") +
+  theme_bw() + #去除背景色
+  theme(panel.grid =element_blank()) + #去除网格线
+  theme(panel.border = element_blank()) + #去除外层边框
+  theme(axis.line = element_blank(),axis.ticks = element_blank(),axis.text = element_blank()) + #去掉坐标轴
+  ggtitle("")+
+  guides(fill = FALSE) 
